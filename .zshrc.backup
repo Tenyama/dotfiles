@@ -24,7 +24,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="false"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
@@ -78,8 +78,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-
-  git
   zoxide
   zsh-autosuggestions
   zsh-syntax-highlighting
@@ -121,3 +119,63 @@ source $ZSH/oh-my-zsh.sh
 
 alias q="exit"
 alias cow="fortune | cowsay -r"
+
+# Spotipy - a Python Library
+export SPOTIPY_CLIENT_ID="06da8cbe68eb439e85b5aac85a67a9ee"
+export SPOTIPY_CLIENT_SECRET="644cfafd12b04cddb8e6df2ea7a236f3"
+export SPOTIPY_REDIRECT_URI="http://localhost:8888/callback"
+
+# >>> LAZY conda initialize >>>
+
+# Add any commands which depend on conda here
+lazy_conda_aliases=('python' 'conda')
+
+load_conda() {
+  for lazy_conda_alias in $lazy_conda_aliases
+  do
+    unalias $lazy_conda_alias
+  done
+
+  __conda_prefix="$HOME/anaconda3" # Set your conda Location
+
+  # >>> conda initialize >>>
+  __conda_setup="$("$__conda_prefix/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  else
+      if [ -f "$__conda_prefix/etc/profile.d/conda.sh" ]; then
+          . "$__conda_prefix/etc/profile.d/conda.sh"
+      else
+          export PATH="$__conda_prefix/bin:$PATH"
+      fi
+  fi
+  unset __conda_setup
+  # <<< conda initialize <<<
+
+  unset __conda_prefix
+  unfunction load_conda
+}
+
+note() {
+  load_conda
+  jupyter notebook ./
+}
+
+for lazy_conda_alias in $lazy_conda_aliases
+do
+  alias $lazy_conda_alias="load_conda && $lazy_conda_alias"
+done
+
+# <<< LAZY conda initialize <<<
+
+# Flutter
+export PATH="$HOME/development/flutter/bin:$PATH"
+
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Golang
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export GOBIN=$HOME/go/bin
