@@ -121,8 +121,8 @@ alias q="exit"
 alias cow="fortune | cowsay -r"
 
 # Spotipy - a Python Library
-export SPOTIPY_CLIENT_ID="06da8cbe68eb439e85b5aac85a67a9ee"
-export SPOTIPY_CLIENT_SECRET="644cfafd12b04cddb8e6df2ea7a236f3"
+export SPOTIPY_CLIENT_ID=
+export SPOTIPY_CLIENT_SECRET=
 export SPOTIPY_REDIRECT_URI="http://localhost:8888/callback"
 
 # >>> LAZY conda initialize >>>
