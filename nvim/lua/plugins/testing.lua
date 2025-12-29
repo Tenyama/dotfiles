@@ -8,43 +8,36 @@ return {
       "rcarriga/nvim-dap-ui", -- recommended
       "theHamsta/nvim-dap-virtual-text", -- recommended
     },
-    init = function()
-      -- override the default keymaps.
-      -- needed until neotest-java is integrated in LazyVim
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      -- run test file
-      keys[#keys + 1] = {
+    keys = {
+      {
         "<leader>tt",
         function()
           require("neotest").run.run(vim.fn.expand("%"))
         end,
-        mode = "n",
-      }
-      -- run nearest test
-      keys[#keys + 1] = {
+        desc = "Run test file",
+      },
+      {
         "<leader>tr",
         function()
           require("neotest").run.run()
         end,
-        mode = "n",
-      }
-      -- debug test file
-      keys[#keys + 1] = {
+        desc = "Run nearest test",
+      },
+      {
         "<leader>tD",
         function()
           require("neotest").run.run({ strategy = "dap" })
         end,
-        mode = "n",
-      }
-      -- debug nearest test
-      keys[#keys + 1] = {
+        desc = "Debug test file",
+      },
+      {
         "<leader>td",
         function()
           require("neotest").run.run({ vim.fn.expand("%"), strategy = "dap" })
         end,
-        mode = "n",
-      }
-    end,
+        desc = "Debug nearest test",
+      },
+    },
   },
   {
     "nvim-neotest/neotest",
