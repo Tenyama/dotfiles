@@ -4,6 +4,12 @@ nmap k gk
 nmap <Down> gj
 nmap <Up> gk
 
+" have $ and 0 navigate visual lines rather than logical ones
+nnoremap $ g$
+vnoremap $ g$
+nnoremap 0 g0
+vnoremap 0 g0
+
 " Quickly remove search highlights
 nmap <F9> :nohl<CR>
 
