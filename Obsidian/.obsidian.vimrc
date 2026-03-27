@@ -68,3 +68,22 @@ nmap <C-j> :focus_down<CR>
 " Splitting windows
 exmap vs obcommand workspace:split-vertical
 exmap hs obcommand workspace:split-horizontal
+
+" Move line up and down
+exmap swapUp obcommand editor:swap-line-up
+exmap swapDown obcommand editor:swap-line-down
+
+nnoremap <A-Up> :swapUp<CR>
+vnoremap <A-Up> :swapUp<CR>
+nnoremap <A-Down> :swapDown<CR>
+vnoremap <A-Down> :swapDown<CR>
+
+" Folding
+exmap toggleFold obcommand editor:toggle-fold
+exmap foldAll obcommand editor:fold-all
+exmap unfoldAll obcommand editor:unfold-all
+
+nmap za :toggleFold<CR>
+nmap zr :foldAll<CR>
+nmap zR :unfoldAll<CR>
+
