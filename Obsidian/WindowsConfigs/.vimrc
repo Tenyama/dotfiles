@@ -1,3 +1,4 @@
+# This is VsVim config so you'll see things like `:vsc {Visual Studio function}`
 let mapleader="\<space>"
 set relativenumber
 set ic
