@@ -1,0 +1,12 @@
+dconf/
+fcitx/
+go/
+ibus/
+lazygit/
+mozilla/
+obsidian/
+pulse/
+vicinae/
+zen/
+.pam_environment
+mimeapps.list
