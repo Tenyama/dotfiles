@@ -26,6 +26,12 @@ hl.monitor({
 	position = "0x0",
 	scale = 1,
 })
+hl.monitor({
+	output = "HDMI-A-3",
+	mode = "1920x1080@144",
+	position = "0x0",
+	scale = 1,
+})
 
 ---------------------
 ---- MY PROGRAMS ----
@@ -50,6 +56,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("quickshell")
 	hl.exec_cmd("systemctl --user start hyprpolkitagent")
 	hl.exec_cmd("systemctl --user start xdg-desktop-portal-hyprland")
+	hl.exec_cmd("systemctl --user start bluetooth.service")
 	hl.exec_cmd("fcitx5")
 	hl.exec_cmd(
 		"awww-daemon & awww img ~/Documents/Wallpapers/wp15132169-milk-outside-a-bag-of-milk-outside-a-bag-of-milk-wallpapers.webp"
@@ -325,6 +332,8 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:mag
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + CTRL + left", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + CTRL + right", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
